@@ -18,8 +18,5 @@ jobs:
     container: mosnamarek/arm32-runtime
     
     steps:
-      - name: Get docker image
-        uses: docker
-
       - name: Get compiler version
         run: g++ --version
