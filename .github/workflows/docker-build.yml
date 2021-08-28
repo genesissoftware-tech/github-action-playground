@@ -7,10 +7,6 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: docker-work
-
 jobs:
   build:
     # The type of runner that the job will run on
@@ -19,4 +15,4 @@ jobs:
     
     steps:
       - name: Get compiler version
-        run: docker run --rm mosnamarek/arm32-runtime g++ --version
+        run: /usr/bin/docker run --rm mosnamarek/arm32-runtime g++ --version
