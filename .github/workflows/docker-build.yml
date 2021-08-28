@@ -18,7 +18,7 @@ jobs:
 
     steps:
       - name: Get docker image
-        uses: docker://ghcr.io/mosnamarek/arm32-runtime
+        uses: docker://mosnamarek/arm32-runtime
 
       - name: Run a multi-line script
         run: g++ --version
