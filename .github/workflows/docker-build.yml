@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Get compiler version
-        run: docker run mosnamarek/arm32-toolchain:9 arm-none-eabi-cpp --version
+        run: arm-none-eabi-cpp --version
 
       - name: Get cmake version
-        run: docker run mosnamarek/arm32-toolchain:9 cmake --version
+        run: cmake --version
