@@ -24,13 +24,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: CMake configure project
-        run: cmake -S . -B $BINARY_DIR
+        run: cmake -S . -B ${{ env.BINARY_DIR }}
 
       - name: Build project
-        run: make --directory $BINARY_DIR
+        run: make --directory ${{ env.BINARY_DIR }}
 
       - name: Run tests on project
-        run: make --directory $BINARY_DIR test
+        run: make --directory ${{ env.BINARY_DIR }} test
 
       - name: Archive test results
         uses: actions/upload-artifact@v2
