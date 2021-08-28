@@ -24,16 +24,16 @@ jobs:
         uses: actions/checkout@v2
 
       - name: CMake configure project
-        run: cmake -S . -B ${{BINARY_DIR}}
+        run: cmake -S . -B $BINARY_DIR
 
       - name: Build project
-        run: make --directory ${{BINARY_DIR}}
+        run: make --directory $BINARY_DIR
 
       - name: Run tests on project
-        run: make --directory ${{BINARY_DIR}} test
+        run: make --directory $BINARY_DIR test
 
       - name: Archive test results
         uses: actions/upload-artifact@v2
         with:
           name: unit-test-report-v${{ matrix.compiler-version }}
-          path: ${{BINARY_DIR}}/Testing/Temporary/LastTest.log
+          path: $BINARY_DIR/Testing/Temporary/LastTest.log
