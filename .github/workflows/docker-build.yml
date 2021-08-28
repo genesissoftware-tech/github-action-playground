@@ -36,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: unit-test-report-v${{ matrix.compiler-version }}
-          path: $BINARY_DIR/Testing/Temporary/LastTest.log
+          path: ${{ BINARY_DIR }}/Testing/Temporary/LastTest.log
