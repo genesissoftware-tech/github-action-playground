@@ -27,6 +27,12 @@ jobs:
       - name: Run tests on project
         run: make --directory build test
 
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit-test-report
+          path: build/Testing/Temporary/LastTest.log
+  
   compiler-v8:
     runs-on: ubuntu-latest
     container: mosnamarek/arm32-toolchain:8
@@ -42,3 +48,9 @@ jobs:
 
       - name: Run tests on project
         run: make --directory build test
+
+      - name: Archive test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit-test-report
+          path: build/Testing/Temporary/LastTest.log
