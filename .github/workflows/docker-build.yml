@@ -17,4 +17,4 @@ jobs:
         run: docker pull mosnamarek/arm32-runtime
 
       - name: Get compiler version
-        run: docker run mosnamarek/arm32-runtime g++ --version
+        run: docker run --platform linux/arm mosnamarek/arm32-runtime g++ --version
