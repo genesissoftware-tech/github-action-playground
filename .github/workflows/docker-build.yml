@@ -2,7 +2,7 @@ name: Docker Run
 
 on:
   push:
-    branches: [ main, docker ]
+    branches: [ main, docker-image ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
