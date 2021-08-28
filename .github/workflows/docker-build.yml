@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     container: mosnamarek/arm32-toolchain:9
     steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
       - name: CMake configure project
         run: cmake -S . -B build
 
@@ -28,6 +31,9 @@ jobs:
     runs-on: ubuntu-latest
     container: mosnamarek/arm32-toolchain:8
     steps:
+      - name: Checkout project
+        uses: actions/checkout@v2
+
       - name: CMake configure project
         run: cmake -S . -B build
 
