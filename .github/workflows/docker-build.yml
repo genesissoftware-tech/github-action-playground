@@ -19,4 +19,4 @@ jobs:
     
     steps:
       - name: Get compiler version
-        run: g++ --version
+        run: docker run --rm mosnamarek/arm32-runtime g++ --version
