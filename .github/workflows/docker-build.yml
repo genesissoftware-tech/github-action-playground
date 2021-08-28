@@ -1,0 +1,24 @@
+name: Docker Run
+
+on:
+  push:
+    branches: [ main, docker ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: docker-work
+
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get docker image
+        uses: docker://ghcr.io/mosnamarek/arm32-runtime
+
+      - name: Run a multi-line script
+        run: g++ --version
