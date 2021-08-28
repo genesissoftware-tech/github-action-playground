@@ -11,10 +11,11 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
-    steps:
-      - name: Pull docker image
-        run: docker pull mosnamarek/arm32-toolchain:9
+    container: mosnamarek/arm32-toolchain:9
 
+    steps:
       - name: Get compiler version
         run: docker run mosnamarek/arm32-toolchain:9 arm-none-eabi-cpp --version
+
+      - name: Get cmake version
+        run: docker run mosnamarek/arm32-toolchain:9 cmake --version
