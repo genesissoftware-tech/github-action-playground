@@ -13,7 +13,10 @@ on:
 jobs:
   compiler-v9:
     runs-on: ubuntu-latest
-    container: mosnamarek/arm32-toolchain:9
+    strategy:
+      matrix:
+        compiler-version: ["8", "9"]
+    container: mosnamarek/arm32-toolchain:${{ matrix.compiler-version }}
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
@@ -30,27 +33,5 @@ jobs:
       - name: Archive test results
         uses: actions/upload-artifact@v2
         with:
-          name: unit-test-report
-          path: build/Testing/Temporary/LastTest.log
-  
-  compiler-v8:
-    runs-on: ubuntu-latest
-    container: mosnamarek/arm32-toolchain:8
-    steps:
-      - name: Checkout project
-        uses: actions/checkout@v2
-
-      - name: CMake configure project
-        run: cmake -S . -B build
-
-      - name: Build project
-        run: make --directory build
-
-      - name: Run tests on project
-        run: make --directory build test
-
-      - name: Archive test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: unit-test-report
+          name: unit-test-report-v${{ matrix.compiler-version }}
           path: build/Testing/Temporary/LastTest.log
