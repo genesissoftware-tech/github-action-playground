@@ -11,8 +11,10 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container: mosnamarek/arm32-runtime
     
     steps:
+      - name: Pull docker image
+        run: docker pull mosnamarek/arm32-runtime
+
       - name: Get compiler version
-        run: /usr/bin/docker run --rm mosnamarek/arm32-runtime g++ --version
+        run: docker run --rm mosnamarek/arm32-runtime g++ --version
