@@ -2,7 +2,7 @@ name: Docker Run
 
 on:
   push:
-    branches: [ main, docker-image ]
+    branches: [ main ]
     paths-ignore:
       - 'docs/**'
       - '**.md'
@@ -15,8 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compiler-version: ["8", "9"]
-    container: mosnamarek/arm32-toolchain:${{ matrix.compiler-version }}
+        compiler-version: ["8", "9", "10"]
+    container: marekmosna/arm32v7-toolchain:${{ matrix.compiler-version }}
     env:
       BINARY_DIR: build
     steps:
