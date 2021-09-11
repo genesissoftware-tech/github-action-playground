@@ -2,6 +2,8 @@ name: Docker Run
 
 on:
   push:
+    tags-ignore:
+      - 'v*'
     branches: [ main ]
     paths-ignore:
       - 'docs/**'
