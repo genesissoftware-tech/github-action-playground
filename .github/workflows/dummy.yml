@@ -8,5 +8,15 @@ jobs:
   runtime:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up QEMU
+        id: qemu
+        uses: docker/setup-qemu-action@v1
+        with:
+          image: marekmosna/arm32v7-runtime:latest
+          platforms: arm
+
+      - name: Available platforms
+        run: echo ${{ steps.qemu.outputs.platforms }}
+
       - name: Update
-        run: docker run --rm --platform linux/arm/v7 arm32v7/ubuntu:latest apt update
+        run: cmake --version
