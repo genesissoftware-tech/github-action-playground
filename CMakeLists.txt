@@ -8,7 +8,6 @@ project(
   DESCRIPTION "Dummy project"
   LANGUAGES CXX C ASM)
 
-
 set(CMAKE_CROSSCOMPILE OFF CACHE BOOL "is crosscompiled")
 message(STATUS "CMAKE_CROSSCOMPILE ${CMAKE_CROSSCOMPILE}")
 
