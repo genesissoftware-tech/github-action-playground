@@ -8,6 +8,9 @@ project(
   DESCRIPTION "Dummy project"
   LANGUAGES CXX C ASM)
 
+set(CMAKE_CROSSCOMPILE OFF CACHE BOOL "is crosscompiled")
+message(STATUS "CMAKE_CROSSCOMPILE ${CMAKE_CROSSCOMPILE}")
+
 # Only do these if this is the main project, and not if it is included through add_subdirectory
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
@@ -31,8 +34,13 @@ endif()
 # The compiled library code is here
 add_subdirectory(src)
 
-# The executable code is here
-add_subdirectory(apps)
-
-# The testing code is here
-add_subdirectory(test)
+IF(CMAKE_CROSSCOMPILING)
+  message(STATUS "Cross-compiling so skipping unit tests.")
+  add_subdirectory(apps)
+ELSE(CMAKE_CROSSCOMPILING)
+  include(CTest)
+  if(BUILD_TESTING)
+    # The testing code is here
+    add_subdirectory(test)
+  endif(BUILD_TESTING)
+ENDIF()
