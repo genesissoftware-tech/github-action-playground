@@ -39,6 +39,7 @@ IF(CMAKE_CROSSCOMPILING)
   add_subdirectory(apps)
 ELSE(CMAKE_CROSSCOMPILING)
   include(CTest)
+  include(FetchContent)
   if(BUILD_TESTING)
     # The testing code is here
     add_subdirectory(test)

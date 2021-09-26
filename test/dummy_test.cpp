@@ -1,6 +1,10 @@
 #include "dummy.hpp"
+#include "gtest/gtest.h"
 
+namespace {
 
-int main() {
-    return return_0();
+TEST(DummyTest, zero) {
+  EXPECT_EQ(0, return_0());
+}
+
 }
