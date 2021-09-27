@@ -33,3 +33,9 @@ jobs:
 
       - name: Run tests
         run: docker run --rm --platform linux/arm/v7 --privileged -v $PWD:/work marekmosna/arm32v7-runtime:latest cmake --build ${{ env.BINARY_DIR }} --target test
+
+      - name: Archive log
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit-test-log
+          path: ${{ env.BINARY_DIR }}/Testing/Temporary/LastTest.log
