@@ -19,3 +19,7 @@ gtest_discover_tests(dummy-test)
 add_executable(system-test ${CMAKE_CURRENT_SOURCE_DIR}/system_test.cpp)
 target_link_libraries(system-test gtest gtest_main)
 gtest_discover_tests(system-test)
+
+add_executable(dummy-message-test ${CMAKE_CURRENT_SOURCE_DIR}/dummy_message_test.cpp)
+target_link_libraries(dummy-message-test libdummy gtest gtest_main)
+gtest_discover_tests(dummy-message-test)

@@ -29,6 +29,8 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   else()
     message(STATUS "Doxygen not found, not building docs")
   endif()
+
+  include(FetchContent)
 endif()
 
 # The compiled library code is here
@@ -39,7 +41,6 @@ IF(CMAKE_CROSSCOMPILING)
   add_subdirectory(apps)
 ELSE(CMAKE_CROSSCOMPILING)
   include(CTest)
-  include(FetchContent)
   if(BUILD_TESTING)
     # The testing code is here
     add_subdirectory(test)
