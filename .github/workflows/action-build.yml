@@ -18,13 +18,11 @@ jobs:
     strategy:
       matrix:
         compiler-version: ["8", "9", "10"]
-    container: marekmosna/arm32v7-toolchain:${{ matrix.compiler-version }}
+    container: marekmosna/arm32v7-none-eabi-toolchain:${{ matrix.compiler-version }}
     env:
-      BINARY_DIR: build
+      BINARY_DIR: build-gcc-v${{ matrix.compiler-version }}
+      TARGET: Dummy
     steps:
-      - name: Compiler version
-        run: arm-none-eabi-cpp --version
-
       - name: Checkout project
         uses: actions/checkout@v2
 
@@ -32,10 +30,10 @@ jobs:
         run: cmake -DCMAKE_TOOLCHAIN_FILE="cmake/arm-gcc-toolchain.cmake" -S . -B ${{ env.BINARY_DIR }}
 
       - name: Build project
-        run: cmake --build ${{ env.BINARY_DIR }} --target Dummy
+        run: cmake --build ${{ env.BINARY_DIR }} --target ${{ env.TARGET }}
 
       - name: Archive build
         uses: actions/upload-artifact@v2
         with:
-          name: dummy-app-gcc-v${{ matrix.compiler-version }}
-          path: ${{ env.BINARY_DIR }}/apps/Dummy
+          name: ${{ env.TARGET }}-app-gcc-v${{ matrix.compiler-version }}
+          path: ${{ env.BINARY_DIR }}/apps/${{ env.TARGET }}

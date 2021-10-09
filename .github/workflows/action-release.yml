@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         compiler-version: ["8", "9", "10"]
-    container: marekmosna/arm32v7-toolchain:${{ matrix.compiler-version }}
+    container: marekmosna/arm32v7-none-eabi-toolchain:${{ matrix.compiler-version }}
     env:
       BINARY_DIR: build
     steps:
