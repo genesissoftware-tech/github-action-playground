@@ -1,4 +1,4 @@
-name: Test Dummy
+name: Run project unit-tests
 
 on:
   push:
