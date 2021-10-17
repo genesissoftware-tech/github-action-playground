@@ -17,11 +17,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compiler-version: ["8", "9", "10"]
+        compiler-version: ["9", "10"]
+        app: ["Dummy0", "Dummy1"]
+        processor: ["STM32F407VG", "STM32F407ZG"]
     container: marekmosna/arm32v7-none-eabi-toolchain:${{ matrix.compiler-version }}
     env:
       BINARY_DIR: build-gcc-v${{ matrix.compiler-version }}
-      TARGET: Dummy
+      TARGET: ${{ matrix.app }}_${{ matrix.processor }}
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
