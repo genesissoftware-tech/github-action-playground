@@ -8,13 +8,11 @@ project(
   DESCRIPTION "Dummy project"
   LANGUAGES CXX C ASM)
 
-set(CMAKE_CROSSCOMPILE OFF CACHE BOOL "is crosscompiled")
-message(STATUS "CMAKE_CROSSCOMPILE ${CMAKE_CROSSCOMPILE}")
-
 # Only do these if this is the main project, and not if it is included through add_subdirectory
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 
-  # Optionally set things like CMAKE_CXX_STANDARD, CMAKE_POSITION_INDEPENDENT_CODE here
+  set(CMAKE_CROSSCOMPILE OFF CACHE BOOL "is crosscompiled")
+  message(STATUS "CMAKE_CROSSCOMPILE ${CMAKE_CROSSCOMPILE}")
 
   # Let's ensure -std=c++xx instead of -std=g++xx
   set(CMAKE_CXX_EXTENSIONS OFF)
